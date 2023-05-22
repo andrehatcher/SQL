@@ -1,0 +1,27 @@
+1. Created a grocery store database
+
+CREATE TABLE grocery_store (id INTEGER PRIMARY KEY, item TEXT, aisle INTEGER, price INTEGER, in_stock INTEGER);
+
+INSERT INTO grocery_store VALUES (1, "ground beef", 2, 4.99, 5);
+INSERT INTO grocery_store VALUES (2, "skirt steak", 2, 15.99, 4);
+INSERT INTO grocery_store VALUES (3, "chicken thighs", 2, 11.99, 4);
+INSERT INTO grocery_store VALUES (4, "chicken drumsticks", 2, 3.99, 3);
+INSERT INTO grocery_store VALUES (5, "shrimp", 2, 6.99, 5);
+INSERT INTO grocery_store VALUES (6, "bacon", 23, 15.00, 6);
+INSERT INTO grocery_store VALUES (7, "avocado", 1, 3.99, 8);
+INSERT INTO grocery_store VALUES (8, "raspberries", 1, 4.99, 5);
+INSERT INTO grocery_store VALUES (9, "rosemary", 1, 1.99, 8);
+INSERT INTO grocery_store VALUES (10, "sweet potato", 1, 1.49, 15);
+INSERT INTO grocery_store VALUES (11, "butter",23, 3.99, 12);
+INSERT INTO grocery_store VALUES (12, "yogurt", 23, 4.99, 4);
+INSERT INTO grocery_store VALUES (13, "eggs", 23, 6.99, 5);
+INSERT INTO grocery_store VALUES (14, "oreos", 17, 4.99, 10);
+INSERT INTO grocery_store VALUES (15, "bbq sauce", 4, 2.99, 8);
+
+2. Organized the database by price
+
+SELECT * FROM grocery_store
+ORDER BY price;
+
+3. Found the sum of all in stock items
+SELECT SUM(in_stock) FROM grocery_store; 
