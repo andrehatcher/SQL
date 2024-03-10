@@ -1,4 +1,4 @@
-1. Pre-created Schema analyzed
+1. Data-set used for analysis
 CREATE TABLE superstore (
     item_id INTEGER PRIMARY KEY,
     item_name TEXT,
