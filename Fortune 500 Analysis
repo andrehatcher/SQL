@@ -57,7 +57,8 @@ VALUES
     ('Company II', 'Telecommunications', 110.5, 2000, 1, 21, 12, 4.9),
     ('Company JJ', 'Manufacturing', 370.0, 3100, 1, 20, 12, 7.6),
     ('Company KK', 'Healthcare', 150.2, 3400, 0, 16, 8, 5.3);
--- Show all the data
+
+-- Show all the data in a table.
 SELECT * 
 FROM fortune_companies;
 
@@ -69,9 +70,9 @@ FROM fortune_companies;
 SELECT company_name, revenue,
 CASE
 	WHEN revenue>=500 THEN "very well"
-    WHEN revenue>=400 THEN "well"
-    WHEN revenue>=300 THEN "sufficient"
-    WHEN revenue>=200 THEN "poor"
+   	WHEN revenue>=400 THEN "well"
+    	WHEN revenue>=300 THEN "sufficient"
+    	WHEN revenue>=200 THEN "poor"
     ELSE "very_poor"
 END AS revenue_rating
 FROM fortune_companies
@@ -79,7 +80,7 @@ ORDER BY revenue;
 
 -- What is the average "average employee tenure" and average "paid time off"? 
 -- Round average "average employee tenure" to the nearest tenth AND average PTO to the nearest whole number.
-SELECT ROUND(AVG(avg_employee_tenure),1) AS avg_all_companies_employee_tenure, ROUND(AVG(paid_time_off_days)) AS avg_PTO
+SELECT ROUND(AVG(avg_employee_tenure),1) AS avg_total_employee_tenure, ROUND(AVG(paid_time_off_days)) AS avg_PTO
 FROM fortune_companies;
 
 -- How many companies, by industry, have healthcare benefits and above average "average employee tenure"?
@@ -89,7 +90,7 @@ WHERE healthcare_benefits=1
 GROUP BY industry
 HAVING avg_employee_tenure>6;
 
--- Which companies have above average "average employee tenure", above average PTO,  health care benefits and revenue over 300?
+-- Which companies have above average "average employee tenure", above average PTO,  health care benefits and revenue greater than or equal to 300?
 SELECT company_name
 FROM fortune_companies
 WHERE avg_employee_tenure>6
