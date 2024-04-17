@@ -1,4 +1,4 @@
--- I used this data to create the following analysis queries.
+--My analysis is based on the following dataset.
 
 CREATE TABLE fortune_companies (
     company_id INTEGER PRIMARY KEY,
@@ -58,15 +58,11 @@ VALUES
     ('Company JJ', 'Manufacturing', 370.0, 3100, 1, 20, 12, 7.6),
     ('Company KK', 'Healthcare', 150.2, 3400, 0, 16, 8, 5.3);
 
--- Show all the data in a table.
-SELECT * 
-FROM fortune_companies;
-
--- What is the highest and lowest revenue? Round to the nearest hundredth.
+--What is the highest and lowest revenue? Round to the nearest hundredth.
 SELECT ROUND(MAX(revenue),2) AS max_revenue, ROUND(MIN(revenue),2) AS min_revenue
 FROM fortune_companies;
 
--- Which companies are doing "very well", "well", "sufficient", "poor", and "very poor" based on revenue?
+--Which companies are doing "very well", "well", "sufficient", "poor", and "very poor" based on revenue?
 SELECT company_name, revenue,
 CASE
 	WHEN revenue>=500 THEN "very well"
@@ -78,22 +74,20 @@ END AS revenue_rating
 FROM fortune_companies
 ORDER BY revenue;
 
--- What is the average "average employee tenure" and average "paid time off"? 
--- Round average "average employee tenure" to the nearest tenth AND average PTO to the nearest whole number.
-SELECT ROUND(AVG(avg_employee_tenure),1) AS avg_total_employee_tenure, ROUND(AVG(paid_time_off_days)) AS avg_PTO
+--What is the average revenue, average number of employees, and average "average employee tenure"? 
+--Round average revenue to the nearest tenth, average number of employees to the nearest whole number, AND average "average employee tenure" to the nearest tenth.
+SELECT ROUND(AVG(revenue),1) AS avg_revenue, ROUND(AVG(employees)) AS avg_employees, ROUND(AVG(avg_employee_tenure),1)
 FROM fortune_companies;
 
--- How many companies, by industry, have healthcare benefits and above average "average employee tenure"?
-SELECT COUNT(company_name), industry
+--Which industries have a higher than average "average employee tenure"? What is each corresponding industry's average employee tenure?
+SELECT industry, avg_employee_tenure
 FROM fortune_companies
-WHERE healthcare_benefits=1
 GROUP BY industry
 HAVING avg_employee_tenure>6;
 
--- Which companies have above average "average employee tenure", above average PTO,  health care benefits and revenue greater than or equal to 300?
+--Which companies have above average "average employee tenure", healthcare benefits, and revenue greater than or equal to 300?
 SELECT company_name
 FROM fortune_companies
 WHERE avg_employee_tenure>6
-AND paid_time_off_days>18
 AND healthcare_benefits=1
 AND revenue>=300;
