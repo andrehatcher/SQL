@@ -27,7 +27,7 @@ FROM BIT_DB.JanSales
 ORDER BY price asc
 LIMIT 1;
 
--- What is the total revenue for each product sold in January? (Revenue can be calculated by multiplying the number of products sold and price of the products.)
+-- What is the total revenue for each product sold in January?
 SELECT Product, ROUND((SUM(Quantity)*price),2) AS revenue
 FROM BIT_DB.JanSales
 GROUP BY Product;
